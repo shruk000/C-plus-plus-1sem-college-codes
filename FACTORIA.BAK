@@ -1,0 +1,19 @@
+//Printing Factorial of No.
+#include<iostream.h>
+#inclued<conio.h>
+
+void main()
+{
+clrscr();
+int A;
+float fac=1;
+cout<<"Enter the no. :";
+cin>>A;
+for(int i=0;i<N;i++)
+ {
+  fac=fac*i;
+  }
+cout<<"Factorial of no. "<<A<<" :";
+cout<<fac;
+getch();
+}

@@ -1,0 +1,47 @@
+//Bubble sort
+#include<iostream.h>
+#include<conio.h>
+
+void main()
+{
+clrscr();
+
+int A[20];
+int N;
+int tmp=0;
+
+cout<<"Enter the no. of elements in the array(max 20) :";
+cin>>N;
+
+cout<<"Enter the elements :"<<endl;
+for(int i=0;i<N;i++)
+{
+ cin>>A[i];
+}
+
+//bubble sort program
+for(i=0;i<N;i++)
+{
+ for(int j=0;j<N-1;j++)
+  {
+   if(A[j]>A[j+1])
+   {
+    tmp=A[j];
+    A[j]=A[j+1];
+    A[j+1]=tmp;
+   }
+  }
+cout<<"Array after every pass :";
+ for(int k=0;k<N;k++)
+ {
+  cout<<A[k]<<"  ";
+ }
+ cout<<endl;
+}
+cout<<"Sorted array is :";
+ for(int k=0;k<N;k++)
+ {
+  cout<<A[k]<<"  ";
+ }
+getch();
+}

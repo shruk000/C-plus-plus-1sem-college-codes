@@ -1,0 +1,95 @@
+#include<iostream.h>
+#include<conio.h>
+
+class factor
+{
+ int A[10];
+ int j;
+public:
+ void fac(int);
+
+ int jj()
+  {
+   return j;
+  }
+
+ int *ga()
+  {
+   return A;
+  }
+};
+
+void factor::fac(int a)
+ {
+  j=0;
+  label:
+  for(int i=2;i<a/2;i++)
+    {
+      if(a%i==0)
+       {
+	 A[j]=i;
+	 a=a/i;
+	 j++;
+	 goto label;
+       }
+    }
+   cout<<"The Factors of no. is/are ";
+   for(i=0;i<j;i++)
+    {
+     cout<<" "<<A[i]<<" ";
+    }
+   cout<<a<<endl<<endl;
+ }
+
+void main()
+{
+ int *ga();
+ clrscr();
+ int s;
+
+ factor f[5];
+ cout<<"How many no you want to enter(max 5) :";
+ cin>>s;
+ int a;
+ for(int i=0;i<s;i++)
+ {
+  cout<<"Enter the "<<i+1<<" no. :";
+  cin>>a;
+  f[i].fac(a);
+ }
+ int pos[5];
+
+//printing H.C.F
+
+a=f[1].jj();
+/* for(i=1;i<s;i++)
+ {
+  if(f[i].jj()<a)
+   {
+     a=f[i].jj();
+   }
+ } */
+int l=0;
+pos[0]=0;
+// for(i=0;i<s;i++)
+   for(int j=1;j<=f[0].jj();j++)
+    {
+      for(int k=0;k<=a;k++)
+	if( (*(f[0].ga()+(j-1)))==(*(f[j].ga()+k)) )
+	 {
+	  pos[l++]=(*(f[j].ga()+(j-1)));
+	  *(f[0].ga()+(j-1))=(*(f[j].ga()+k))=0;
+	  break;
+	 }
+    }
+
+ cout<<"H.C.F of the given no.s is ... ";
+ int noo=0;
+ for(i=0;i<l;i++)
+  {
+    pos[i]*=pos[i];
+    noo=pos[i];
+  }
+ cout<<noo;
+getch();
+}

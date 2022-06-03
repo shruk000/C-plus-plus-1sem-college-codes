@@ -1,0 +1,37 @@
+#include<iostream.h>
+#include<conio.h>
+
+class cool
+{
+ int a;
+ int b;
+public:
+ void getdata()
+  {
+   cout<<"Enter any two no. :\n";
+   cin>>a>>b;
+  }
+};
+
+class derived:public cool
+{
+ int p;
+ int q;
+public:
+ derived()
+ {
+  p=q=1;
+ }
+ void showdata()
+  {
+   cout<<"Details :";
+   cout<<p<<q;
+  }
+};
+
+void main()
+{
+ derived d;
+ d.getdata();
+ d.showdata();
+}

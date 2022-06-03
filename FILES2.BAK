@@ -1,0 +1,62 @@
+//#include<iostream.h>
+#include<conio.h>
+#include<fstream.h>
+
+class files
+{
+ int marks[3];
+ char name[20];
+
+public:
+  void getdata();
+  void putdata();
+};
+
+void files::getdata()
+ {
+   cout<"Enter the details of the Student :";
+   cout<<"Enter the name :";
+   gets(name);
+   cout<<"Enter marks \n";
+
+   for(int i=0;i<3;i++)
+    {
+      cout<<setw(4)<<"Subject ["<<i+1<<"]  :";
+      cin>>marks[i];
+    }
+  }
+void files::putdata()
+ {
+   cout<"The details of the Student are:";
+   cout<<"Name :";
+   puts(name);
+   cout<<"Marks in \n";
+
+   for(int i=0;i<3;i++)
+    {
+      cout<<setw(4)<<"Subject ["<<i+1<<"]  :";
+      cout<<marks[i];
+    }
+  }
+
+
+void main()
+{
+ clrscr();
+ int A[5];
+ files s;
+
+ ofstream fout;
+ fout.open("Sarfaraz.dat",ios::out);
+
+ s.getdata();
+ s.putdata();
+
+
+
+
+
+ fout.close();
+
+ getch();
+}

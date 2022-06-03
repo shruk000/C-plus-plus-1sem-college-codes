@@ -1,0 +1,17 @@
+#include<stdio.h>
+#define square(a) a*a
+#define pi 3.14
+#define circle(b) 3.14*b*b
+int main()
+{ int side,area;
+printf("-------------area of the sqaure-------------");
+printf("\nenter side of the sqaure-- ");
+scanf("%d",&side);
+printf("\nArea of sqare of side %d with macro = %d",side,square(side));
+area=pi*square(side);
+printf("\nArea of circle considering above given side-");
+printf("\n \t\t -as radius AREA= %d",area);
+printf("\n\t\t circle AreA through macro %d ",circle(side));
+
+return 0;
+}

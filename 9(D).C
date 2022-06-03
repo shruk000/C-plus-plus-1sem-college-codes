@@ -1,0 +1,19 @@
+/* C assingment
+    made by--shahrukh
+    roll--2017UBT1029  */
+
+
+#include<conio.h>
+#include<stdio.h>
+void main()
+{ char a,b,str[]="hELLo-wORld";
+  int i;
+  for(i=0;str[i]!='\0';i++)
+   if(str[i]>='A'&&str[i]<='Z')
+	   {a=str[i];
+	   b=a-'A';
+	   str[i]='a'+b;
+	   }
+printf("%s",str);
+getch();
+}

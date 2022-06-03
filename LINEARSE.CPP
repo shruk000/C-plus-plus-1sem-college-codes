@@ -1,0 +1,39 @@
+#include<iostream.h>
+#include<conio.h>
+
+void main()
+{
+ clrscr();
+int N,A[20];
+int pos,f;
+int found=0;
+
+cout<<"Enter the no. of elements in Array(max 20) :";
+cin>>N;
+cout<<"Enter the elements :";
+for(int i=0;i<N;i++)
+{
+ cin>>A[i];
+}
+
+clrscr();
+cout<<"Enter the no . to be searched  :";
+cin>>f;
+
+for(i=0;i<N;i++)
+{
+ if(f==A[i])
+ {
+  found++;
+  pos=i;
+ }
+}
+if(found)
+{
+ cout<<"No is at "<<pos+1<<" position :";
+
+ }
+else
+cout<<"Not found ";
+getch();
+}

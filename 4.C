@@ -1,0 +1,17 @@
+/* C assingment
+    made by--shahrukh
+    roll--2017UBT1029  */
+
+#include<stdio.h>
+#include<conio.h>
+void main()
+{int i=1,num;
+long int fact=1;
+clrscr();
+printf("\tnumber for factorial to be printed...num= ");
+scanf("%d",&num);
+for(;i<=num;i++)
+fact=fact*i;
+printf("\n\tfactorial of %d = %d",num,fact);
+getch();
+}

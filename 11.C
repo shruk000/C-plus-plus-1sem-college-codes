@@ -1,0 +1,56 @@
+/* C assingment
+    made by--shahrukh
+    roll--2017UBT1029  */
+
+#include<stdio.h>
+#include<conio.h>
+void display(int *arr,int a,int b)
+  { int i,j;
+	 for(i=0;i<a;i++)
+	  {  printf("\n");
+		 for(j=0;j<b;j++)
+		  printf("\t %d",*(arr+i*b+j));
+	 }
+
+}
+void show(int (*ar)[5],int,int);
+
+
+ void main()
+{ int arr[][5]={
+				 {12,30,23,54,3545},
+				 {102,350,823,21,35},
+				 {192,340,263,541,34},
+				 {52,356,7623,5621,45},
+				 {14,830,893,5421,345},
+				 {128,35,53,5421,385},
+				 {162,321,453,5421,345},
+				 {1342,330,583,5421,445},
+				 {1432,3,563,5421,845},				 };
+
+clrscr();
+display(arr,9,5);
+printf("\n\n using ponter of 2d array\n");
+show(arr,9,5);
+getch();
+}
+ // using pointer of 2 dimensional array
+   void show(int (*ar)[5],int a,int b)
+   {   int *p,i,j;
+	   for(i=0;i<a;i++)
+	   {    printf("\n");
+			p=ar+i;
+
+		  for(j=0;j<b;j++)
+		   printf("\t%d",*(p+j));
+
+	   }
+   }
+
+
+
+
+
+
+
+

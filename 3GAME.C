@@ -1,0 +1,267 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<time.h>
+int blk=0;
+void bl_ank(int num,int b_ock);
+void whi_te(int x,int y);
+void posi(int (*pos)[3][3],int *p);
+int status (int (*pos)[3][3]);
+void plusGen(void)
+{ int i,j;
+ for(i=0;i<24;i++)
+ for(j=0;j<80;j++)
+{if((j==58||j==68)&&i>-1)
+ printf("|");
+ else if((j==10||j==20)&&i>0&&i<14)
+ printf("|");
+ else if((i==5||i==9)&&j>-1)
+  printf("_");
+  else if((i==16||i==20)&&j>43)
+  printf("_");
+ else
+ printf(" ");
+}}
+void cornate(void)
+{ int x,y,i,j;
+   // for goto function origin is (1,1)
+  // never put 0 in goto function else it will wirte on last cursor position
+//collum
+gotoxy(53,2);printf("1");gotoxy(63,2);printf("2");gotoxy(73,2);printf("3");
+//row
+gotoxy(46,5);printf("1");gotoxy(46,9);printf("2");gotoxy(46,13);printf("3");
+//cordinates
+gotoxy(53,6);printf("1,1");gotoxy(63,6);printf("2,1");gotoxy(73,6);printf("3,1");
+gotoxy(53,10);printf("1,2");gotoxy(63,10);printf("2,2");gotoxy(73,10);printf("3,2");
+gotoxy(53,14);printf("1,3");gotoxy(63,14);printf("2,3");gotoxy(73,14);printf("3,3");
+}
+void zero(int x,int y)
+{ gotoxy(x-1,y);printf("/-\\");
+gotoxy(x-1,y+1);printf("\\_/");
+}
+void cross(int x,int y)
+{ gotoxy(x-1,y);printf("\\_/");
+gotoxy(x-1,y+1);printf("/ \\");
+}
+int main()
+{ int *p,*q,sum=0;
+  int pos[3][3][3];
+int i,j,k,l,z,x,y;
+ int sval;
+  time_t T;
+clrscr();
+plusGen();
+cornate();
+for(i=0;i<3;i++)
+for(j=0;j<3;j++)
+for(k=0;k<3;k++)
+{pos[i][j][k]=0;}
+  sval=time(&T);
+  srand(sval);
+  p=(int*)malloc(6);
+  for(i=0;i<7;i++)
+  *(p+i)=(rand())%9;
+//any position star
+  posi(pos,p);
+  q=(int*)pos;
+do
+{		repeat:
+	gotoxy(1,18);
+	printf("enter cube number ");
+	scanf("%d",&z);
+	printf("\nenter ur X coordinate ");
+	scanf("%d",&x);
+	printf("\n-------to re-enter these inputs\n.. give input greter then 3 in Y");
+	printf("\nenter ur Y coordinate ");
+	scanf("%d",&y);
+	if(z>3||y>3||x>3)
+	goto repeat;
+      if(z==1)
+      zero(-5+10*x,4*y);
+      if(z==2)
+	zero(44+10*x,4*y);
+      if(z==3)
+	zero(44+10*x,11+4*y);
+	pos[z-1][x-1][y-1]=10;
+	if((l=status(pos))-1000)
+		{  bl_ank(l,blk);
+		    getch();
+		    clrscr();
+		     gotoxy(38,12);
+		    printf("YOU win");
+		 getch();
+		 exit(0);
+		}
+   posi(pos,p);
+    if((l=status(pos))-1000)
+	  {         bl_ank(l,blk);
+			getch();
+			clrscr();
+			gotoxy(38,12);
+			printf("CPU win");
+			getch();
+			exit(0);}
+	sum++;
+	 }while(sum!=5);
+
+
+       getch();
+  return 0;
+  }
+void posi(int (*pos)[3][3],int *p)
+{ int k,l,temp;
+ int flag;
+   int *posss,(*poss)[3];
+    poss=(int(*)[3])(pos+0);
+   label:
+	 for(k=0;k<3;k++)
+	{ flag=0;
+	posss=(int*)(poss+k);
+	 if((*(p+k)==1||*(p+k)==4||*(p+k)==7)&&((*(posss+0)-1)&&(*(posss+0)-10)))
+	{cross(5,4+k*4);
+	*(p+k)=*(p+k)+1;
+	*(posss+0)=flag=1;
+	break;
+	}else
+	 if((*(p+k)==2||*(p+k)==5)&&((*(posss+1)-1)&&(*(posss+1)-10)))
+	{ cross(15,4+k*4);
+	*(p+k)=*(p+k)+1;
+      *(posss+1)=flag=1;
+       break;
+       }else
+     if((*(p+k)==3||*(p+k)==6||*(p+k)==0)&&((*(posss+2)-1)&&(*(posss+2)-10)))
+     {cross(25,4+k*4);
+      *(p+k)=*(p+k)+1;
+      *(posss+2)=flag=1;
+      break;
+      }
+     }
+   if(flag==0)
+ { for(k=0;k<3;k++)
+  {*(p+k)=(*(p+k)+11)%4;
+   }
+ goto label;
+ }
+     poss=(int(*)[3])(pos+1);
+   label1:
+	 for(k=0;k<3;k++)
+	{ flag=0;
+	posss=(int*)(poss+k);
+	 if((*(p+k)==1||*(p+k)==4||*(p+k)==7)&&((*(posss+0)-1)&&(*(posss+0)-10)))
+	{cross(54,4+4*k);
+	*(p+k)=*(p+k)+1;
+	*(posss+0)=flag=1;
+	break;
+	}else
+	 if((*(p+k)==2||*(p+k)==5)&&((*(posss+1)-1)&&(*(posss+1)-10)))
+	{ cross(64,4+4*k);
+	*(p+k)=*(p+k)+1;
+      *(posss+1)=flag=1;
+       break;
+       }else
+     if((*(p+k)==3||*(p+k)==6||*(p+k)==0)&&((*(posss+2)-1)&&(*(posss+2)-10)))
+     {cross(74,4+4*k);
+      *(p+k)=*(p+k)+1;
+      *(posss+2)=flag=1;
+      break;
+      }
+     }
+   if(flag==0)
+ { for(k=0;k<3;k++)
+  {*(p+k)=(*(p+k)+11)%4;
+   }
+ goto label1;
+ }
+    poss=(int(*)[3])(pos+2);
+   label2:
+	 for(k=0;k<2;k++)
+	{ flag=0;
+	posss=(int*)(poss+k);
+	 if((*(p+k)==1||*(p+k)==4||*(p+k)==7)&&((*(posss+0)-1)&&(*(posss+0)-10)))
+	{cross(54,15+k*4);
+	*(p+k)=*(p+k)+1;
+	*(posss+0)=flag=1;
+	break;
+	}else
+	 if((*(p+k)==2||*(p+k)==5)&&((*(posss+1)-1)&&(*(posss+1)-10)))
+	{ cross(64,15+k*4);
+	*(p+k)=*(p+k)+1;
+      *(posss+1)=flag=1;
+       break;
+       }else
+     if((*(p+k)==3||*(p+k)==6||*(p+k)==0)&&((*(posss+2)-1)&&(*(posss+2)-10)))
+     {cross(74,15+k*4);
+      *(p+k)=*(p+k)+1;
+      *(posss+2)=flag=1;
+      break;
+      }
+     }
+   if(flag==0)
+ { for(k=0;k<3;k++)
+  {*(p+k)=(*(p+k)+11)%4;
+   }
+ goto label2;
+ }
+
+ }
+
+int status (int (*pos)[3][3])
+{ static int x=0;
+    int i,k,j,*posss,(*poss)[3],p[3][3][3],temp,TEMP;
+  for(i=0;i<3;i++)
+  { poss=(int (*)[3])(pos+i);
+     for(j=0;j<3;j++)
+    {  posss=(int(*))(poss+j);
+      for (k=0;k<3;k++)
+       p[i][j][k]=*(posss+k);
+    }}
+   for(i=0;i<3;i++)
+ {  blk=i;
+		  if(p[i][1][1]==1||p[i][1][1]==10)
+     {	       if(p[i][0][0]==p[i][1][1]&&p[i][1][1]==p[i][2][2])
+	return 2;
+	       if(p[i][0][2]==p[i][1][1]&&p[i][1][1]==p[i][2][0])
+	return 3;
+      }
+  for(j=0;j<3;j++)
+    {  temp=0;TEMP=0;
+      for(k=0;k<3;k++)
+       {  temp=p[i][j][k]+temp;
+	  TEMP=p[i][k][j]+TEMP;
+		if(temp==3||temp==30)
+			 return 4+j;
+		if(TEMP==3||TEMP==30)
+			return 7+j;
+	 }
+      }
+ }
+ return 1000;
+}
+
+  void bl_ank(int num,int b_ock)
+{  int i,j,k;
+   for(i=0;i<3;i++)
+   for(j=0;j<3;j++)
+  {  if(num==2&&i==j)
+      continue;
+     if(num==3&&(i+j)==2)
+       continue;
+      if(num==4+i)
+      continue;
+      if(num==7+j)
+      continue;
+     if(b_ock==0)
+     whi_te(5+10*j,4+4*i);
+     if(b_ock==1)
+     whi_te(54+10*j,4+4*i);
+     if(b_ock==2)
+     whi_te(54+10*j,15+4*i);
+    }
+
+}
+void whi_te(int x,int y)
+{ gotoxy(x-1,y);
+printf("   ");
+gotoxy(x-1,y+1);
+printf("   ");
+}

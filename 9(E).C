@@ -1,0 +1,21 @@
+/* C assingment
+    made by--shahrukh
+    roll--2017UBT1029  */
+
+
+#include<stdio.h>
+#include<conio.h>
+
+void main(){
+ char str[15],newStr[15];
+ int i,j,a;
+ clrscr();
+ printf("\t------------reversing a string-----------");
+ printf("\n\t\t enter any string\t");
+ scanf("%[^\n]s",str);
+ for(i=0;str[i]!='\0';i++);
+ for(a=j=i-1,i=0;str[i]!='\0'; newStr[j]=str[i],i++,j--);
+ newStr[a+1]='\0';
+ printf("\nreversed string should look like\t -%s-",newStr);
+ getch();
+ }
